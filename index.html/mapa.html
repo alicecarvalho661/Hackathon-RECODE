@@ -1,4 +1,4 @@
-<html lang="pt-BR"> 
+<html lang="pt-BR">  
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +19,7 @@
     <h2>Previsão e Monitoramento</h2>
     <p>Este mapa mostra as condições do vento e chuva em tempo real.</p>
     
-    <!-- Mapa OSM -->
+    <!-- Mapa OSM existente -->
     <div class="mapouter">
       <div class="osm_canvas">
         <iframe 
@@ -41,10 +41,10 @@
           doc.write('<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.min.js"><\/script>');
           doc.write('<div id="osm-map" style="width:765px; height:551px;"></div>');
 
-          doc.write(`
+          doc.write(`  
             <script>
               var mapOptions = {
-                center: [-29.8425284, -53.7680577],
+                center: [-30.0324999, -51.2303767],
                 zoom: 7,
                 attributionControl: true
               };
@@ -56,8 +56,8 @@
               var layer = new L.TileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png");
               map.addLayer(layer);
 
-              let marker = new L.Marker([-29.8425284, -53.7680577]);
-              marker.addTo(map).bindPopup('');
+              let marker = new L.Marker([-30.0324999, -51.2303767]);
+              marker.addTo(map).bindPopup('Localização de Porto Alegre');
               marker.on('mouseover', function(ev) {
                 marker.openPopup();
               });
@@ -90,25 +90,24 @@
 
   <section id="informacoes-meteorologicas">
     <h3>Dados Meteorológicos</h3>
-    <p>Temperatura: <span class="dado-meteorologico">20°C</span></p>
-    <p>Clima: <span class="dado-meteorologico">Ensolarado</span></p>
-    <p>Velocidade do Vento: <span class="dado-meteorologico">15 km/h</span></p>
-    <p>Precipitação: <span class="dado-meteorologico">5 mm</span></p>
-</section>
-
+    <p>Temperatura: <span id="temperature" class="dado-meteorologico">20°C</span></p>
+    <p>Clima: <span id="weather" class="dado-meteorologico">Ensolarado</span></p>
+    <p>Velocidade do Vento: <span id="wind-speed" class="dado-meteorologico">15 km/h</span></p>
+    <p>Precipitação: <span id="precipitation" class="dado-meteorologico">5 mm</span></p>
+  </section>
 
   <script>
     const apiKey = "00bc073b05e84cd18b6142212242610"; // chave da WeatherAPI
-    const city = "Santa Maria"; // podem selecionar outra cidade desejada
+    const city = "Porto Alegre"; // podem selecionar outra cidade desejada
     const weatherUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`;
 
     fetch(weatherUrl)
       .then(response => response.json())
       .then(data => {
-        document.getElementById('temperature').innerText = `Temperatura: ${data.current.temp_c} °C`;
-        document.getElementById('weather').innerText = `Clima: ${data.current.condition.text}`;
-        document.getElementById('wind-speed').innerText = `Velocidade do Vento: ${data.current.wind_kph} km/h`;
-        document.getElementById('precipitation').innerText = `Precipitação: ${data.current.precip_mm} mm`;
+        document.getElementById('temperature').innerText = ` ${data.current.temp_c} °C`;
+        document.getElementById('weather').innerText = ` ${data.current.condition.text}`;
+        document.getElementById('wind-speed').innerText = ` ${data.current.wind_kph} km/h`;
+        document.getElementById('precipitation').innerText = ` ${data.current.precip_mm} mm`;
       })
       .catch(error => {
         console.error('Erro ao obter dados meteorológicos:', error);
