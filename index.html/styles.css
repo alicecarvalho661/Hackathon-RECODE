@@ -47,7 +47,9 @@ header p {
 }
 
 @keyframes blink {
-  50% { opacity: 0.5; }
+  50% {
+    opacity: 0.5;
+  }
 }
 
 .alert-banner {
@@ -109,15 +111,15 @@ footer a {
 
 footer a:hover {
   text-decoration: underline;
-} 
+}
 
 /* boletins meteorológicos */
 #boletins {
-  background-color: #e0f7ff; 
-  border: 2px solid #007acc; 
-  border-radius: 10px; 
-  padding: 20px; 
-  margin: 20px; 
+  background-color: #e0f7ff;
+  border: 2px solid #007acc;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   animation: slideIn 0.5s ease-in-out;
 }
@@ -125,77 +127,79 @@ footer a:hover {
 
 @keyframes slideIn {
   from {
-    transform: translateY(-20px); 
-    opacity: 0; 
+    transform: translateY(-20px);
+    opacity: 0;
   }
+
   to {
-    transform: translateY(0); 
-    opacity: 1; 
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 
 
 #boletins a {
   color: #007acc;
-  font-weight: bold; 
-  transition: color 0.3s ease; 
+  font-weight: bold;
+  transition: color 0.3s ease;
 }
 
 #boletins a:hover {
-  color: #005fa3; 
+  color: #005fa3;
   text-decoration: underline;
 }
 
 
 #boletins ul {
-  padding-left: 20px; 
+  padding-left: 20px;
 }
 
 #boletins li {
-  background-color: #fff; 
+  background-color: #fff;
   border-radius: 5px;
-  padding: 10px; 
-  margin: 10px 0; 
+  padding: 10px;
+  margin: 10px 0;
   transition: background 0.3s ease;
 }
 
 #boletins li:hover {
-  background-color: #d1ecf1; 
+  background-color: #d1ecf1;
 }
 
 /* seção de informações meteorológicas */
 #informacoes-meteorologicas {
-  background-color: rgba(173, 216, 230, 0.7); 
+  background-color: rgba(173, 216, 230, 0.7);
   border-radius: 15px;
   padding: 20px;
-  margin: 20px 0; 
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); 
-  animation: fadeIn 1.5s ease-in; 
+  margin: 20px 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1.5s ease-in;
 }
 
 
 @keyframes fadeIn {
   from {
-      opacity: 0;
+    opacity: 0;
   }
+
   to {
-      opacity: 1;
+    opacity: 1;
   }
 }
 
 /* títulos */
 #informacoes-meteorologicas h3 {
-  font-family: 'Courier New', Courier, monospace; /
-  font-size: 24px; /
-  color: #0056b3; 
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); 
+  font-family: 'Courier New', Courier, monospace; 
+  font-size: 24px;
+  color: #0056b3;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 
 #informacoes-meteorologicas p {
-  font-family: 'Arial', sans-serif; 
-  font-size: 18px; 
-  color: #333; 
+  font-family: 'Arial', sans-serif;
+  font-size: 18px;
+  color: #333;
   line-height: 1.6;
 }
 
@@ -204,25 +208,25 @@ footer a:hover {
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 10px;
   padding: 8px;
-  margin: 10px 0; 
+  margin: 10px 0;
   transition: transform 0.3s ease;
 }
 
 .dado-meteorologico:hover {
-  transform: scale(1.05); 
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Estilo para ícones */
 .icon-meteorologico {
-  width: 30px; 
+  width: 30px;
   height: 30px;
-  margin-right: 10px; 
-  vertical-align: middle; 
+  margin-right: 10px;
+  vertical-align: middle;
 }
 
 /* Estilo para a lista de dados meteorológicos */
 #informacoes-meteorologicas ul {
-  list-style-type: none; 
-  padding: 0; 
+  list-style-type: none;
+  padding: 0;
 }
