@@ -1,4 +1,4 @@
-/* Estilos Globais */
+/* Estilos Globais */ 
 * {
   margin: 0;
   padding: 0;
@@ -7,23 +7,22 @@
 
 body {
   font-family: Arial, sans-serif;
-  line-height: 1.6;
-  background-color: #f4f4f4;
+  background-color: #f9f9f9;
   color: #333;
-  margin: 0;
-  padding: 0;
+  line-height: 1.6;
 }
 
 /* Cabeçalho */
 header {
   background-color: #007BFF;
-  color: white;
-  padding: 20px;
+  color: #fff;
+  padding: 1.5em;
   text-align: center;
 }
 
 header h1 {
   font-size: 2rem;
+  margin-bottom: 0.5em;
 }
 
 header p {
@@ -36,56 +35,56 @@ header p {
   color: white;
   text-align: center;
   padding: 10px;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
+  font-weight: bold;
+  margin-top: -10px;
 }
 
 .alert-banner p {
-  font-weight: bold;
+  font-size: 1.1rem;
 }
 
-@keyframes blink {
-  50% {
-    opacity: 0.5;
-  }
+/* Estilo da Seção de Botões */
+.buttons {
+  display: flex; /* Mantém os botões lado a lado */
+  flex-wrap: wrap;
+  justify-content: center; /* Mantém os botões centralizados */
+  gap: 1rem; /* Espaçamento entre os botões */
+  padding: 2rem;
 }
 
-.alert-banner {
-  animation: blink 1s infinite;
-}
-
-/* Seções de Conteúdo */
-section {
-  padding: 20px;
-  margin-top: 60px;
-  /* Ajustar devido ao banner fixo */
-  background-color: white;
-  margin: 20px;
+.buttons button {
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  padding: 1em;
+  font-size: 1rem;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+  max-width: 200px;
+  min-height: 60px; /* Altura mínima uniforme */
+  display: flex;
+  align-items: center; /* Alinhamento vertical do conteúdo */
+  justify-content: center; /* Centralizar o texto */
 }
 
-h2 {
-  color: #007BFF;
-  margin-bottom: 10px;
+/* Remover sublinhado para links dentro dos botões */
+.buttons a {
+  text-decoration: none; /* Remove sublinhado dos links */
+  color: white; /* Garante que o texto dos links seja branco */
 }
 
-ul {
-  list-style-type: square;
-  padding-left: 20px;
+/* Efeito de hover para os botões */
+.buttons button:hover {
+  background-color: #0056b3;
 }
 
-ul li {
-  margin-bottom: 10px;
-}
-
-/* Imagem do Mapa */
-.imagem-mapa {
-  max-width: 100%;
-  height: auto;
-  margin-top: 10px;
+/* Estilo do texto nos botões */
+.buttons h3 {
+  font-size: 1rem;
+  font-weight: normal;
+  margin: 0; /* Remove margens extras */
 }
 
 /* Rodapé */
@@ -93,15 +92,12 @@ footer {
   text-align: center;
   background-color: #333;
   color: white;
-  padding: 10px 0;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  margin-top: 20px;
+  padding: 1.5em 0;
+  margin-top: 1.5rem;
 }
 
 footer p {
-  margin: 5px 0;
+  margin: 0.3rem 0;
 }
 
 footer a {
@@ -113,120 +109,70 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* boletins meteorológicos */
-#boletins {
-  background-color: #e0f7ff;
-  border: 2px solid #007acc;
-  border-radius: 10px;
-  padding: 20px;
-  margin: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  animation: slideIn 0.5s ease-in-out;
-}
-
-
-@keyframes slideIn {
-  from {
-    transform: translateY(-20px);
-    opacity: 0;
+/* Layout Responsivo */
+@media (min-width: 768px) {
+  .buttons {
+    gap: 1.5rem; /* Aumenta o espaçamento entre botões em telas maiores */
   }
 
-  to {
-    transform: translateY(0);
-    opacity: 1;
+  .buttons button {
+    font-size: 1.1rem;
+    padding: 1.2em 2em; /* Aumenta o padding em telas maiores */
+    max-width: 220px; /* Ajusta a largura máxima em telas maiores */
   }
 }
 
-
-#boletins a {
-  color: #007acc;
-  font-weight: bold;
-  transition: color 0.3s ease;
+/* Seções de Preparação e Recursos */
+.preparation-tips, .resources {
+  background-color: #fff; /* Fundo branco para as seções */
+  border: 1px solid #ccc; /* Borda cinza clara */
+  border-radius: 8px; /* Bordas arredondadas */
+  margin: 1.5rem 0; /* Espaço entre as seções */
+  padding: 1.5rem; /* Espaço interno */
 }
 
-#boletins a:hover {
-  color: #005fa3;
-  text-decoration: underline;
+h2 {
+  color: #007BFF; /* Cor do título */
+  margin-bottom: 1em; /* Espaçamento abaixo do título */
 }
 
-
-#boletins ul {
-  padding-left: 20px;
+ul {
+  list-style-type: none; /* Remove marcadores de lista */
+  padding: 0; /* Remove padding da lista */
 }
 
-#boletins li {
-  background-color: #fff;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 10px 0;
-  transition: background 0.3s ease;
+li {
+  margin-bottom: 0.5em; /* Espaço entre os itens da lista */
 }
 
-#boletins li:hover {
-  background-color: #d1ecf1;
+/* Links */
+a {
+  color: #007BFF; /* Cor dos links */
+  text-decoration: none; /* Remove sublinhado dos links */
 }
 
-/* seção de informações meteorológicas */
-#informacoes-meteorologicas {
-  background-color: rgba(173, 216, 230, 0.7);
-  border-radius: 15px;
-  padding: 20px;
-  margin: 20px 0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 1.5s ease-in;
+a:hover {
+  text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
 }
 
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
+/* Rodapé */
+footer {
+  text-align: center;
+  background-color: #333;
+  color: white;
+  padding: 1.5em 0;
+  margin-top: 1.5rem;
 }
 
-/* títulos */
-#informacoes-meteorologicas h3 {
-  font-family: 'Courier New', Courier, monospace; 
-  font-size: 24px;
-  color: #0056b3;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+footer p {
+  margin: 0.3rem 0;
 }
 
-
-#informacoes-meteorologicas p {
-  font-family: 'Arial', sans-serif;
-  font-size: 18px;
-  color: #333;
-  line-height: 1.6;
+footer a {
+  color: #FFD700; /* Cor dos links no rodapé */
+  text-decoration: none; /* Remove sublinhado dos links */
 }
 
-
-.dado-meteorologico {
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 10px;
-  padding: 8px;
-  margin: 10px 0;
-  transition: transform 0.3s ease;
-}
-
-.dado-meteorologico:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* Estilo para ícones */
-.icon-meteorologico {
-  width: 30px;
-  height: 30px;
-  margin-right: 10px;
-  vertical-align: middle;
-}
-
-/* Estilo para a lista de dados meteorológicos */
-#informacoes-meteorologicas ul {
-  list-style-type: none;
-  padding: 0;
+footer a:hover {
+  text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
 }
