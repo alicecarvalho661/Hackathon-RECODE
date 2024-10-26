@@ -20,73 +20,25 @@
     <h2>Previsão e Monitoramento</h2>
     <p>Este mapa mostra as condições do vento e chuva em tempo real.</p>
     
-    <!-- Mapa OSM existente -->
+    <!-- Novo Mapa Google -->
     <div class="mapouter">
-      <div class="osm_canvas">
-        <iframe 
-          width="765" 
-          height="551" 
-          id="osm_canvas" 
-          src="about:blank" 
-          frameborder="0" 
-          scrolling="no" 
-          marginheight="0" 
-          marginwidth="0">
-        </iframe>
-
-        <script>
-          const canvas = document.getElementById('osm_canvas');
-          const doc = canvas.contentDocument;
-          
-          doc.write('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.min.css" />');
-          doc.write('<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.min.js"><\/script>');
-          doc.write('<div id="osm-map" style="width:765px; height:551px;"></div>');
-
-          doc.write(`  
-            <script>
-              var mapOptions = {
-                center: [-30.0324999, -51.2303767],
-                zoom: 7,
-                attributionControl: true
-              };
-              var map = new L.map("osm-map", mapOptions);
-              map.attributionControl.setPrefix(
-                '&copy; <a target="_blank" href="https://www.openstreetmap.org/copyright" rel="nofollow noopener noreferrer">OpenStreetMap</a>'
-              );
-
-              var layer = new L.TileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png");
-              map.addLayer(layer);
-
-              let marker = new L.Marker([-30.0324999, -51.2303767]);
-              marker.addTo(map).bindPopup('Localização de Porto Alegre');
-              marker.on('mouseover', function(ev) {
-                marker.openPopup();
-              });
-            <\/script>
-          `);
-
-          doc.close();
-        </script>
-
-        <style>
-          .mapouter {
-            position: relative;
-            text-align: right;
-            height: 551px;
-            width: 765px;
-          }
-          .osm_canvas {
-            overflow: hidden;
-            background: none !important;
-            height: 551px;
-            width: 765px;
-          }
-        </style>
-        
-        <a href="https://www.embedmaps.co/openstreetmap">openstreetmap on website</a>
-      </div>
+      <iframe 
+        src="https://www.google.com/maps/d/embed?mid=1xXye4eWT0X1nhpUpyksHwisuLNaUh28&ehbc=2E312F" 
+        width="640" 
+        height="480" 
+        style="border:0;">
+      </iframe>
     </div>
 
+    <style>
+      .mapouter {
+        position: relative;
+        text-align: center;
+        height: 480px;
+        width: 640px;
+        margin: auto;
+      }
+    </style>
   </section>
 
   <section id="informacoes-meteorologicas">
