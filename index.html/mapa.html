@@ -1,0 +1,124 @@
+<html lang="pt-BR"> 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mapa meteorológico em tempo real - Central de Emergência RS">
+  <title>Mapa Meteorológico - Central de Emergência RS</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <!-- Cabeçalho -->
+  <header>
+    <h1>Mapa Meteorológico: Enchentes RS</h1>
+    <p>Acompanhe as condições meteorológicas em tempo real.</p>
+  </header>
+
+  <!-- Mapa Meteorológico -->
+  <section id="mapa-meteorologico">
+    <h2>Previsão e Monitoramento</h2>
+    <p>Este mapa mostra as condições do vento e chuva em tempo real.</p>
+    
+    <!-- Mapa OSM -->
+    <div class="mapouter">
+      <div class="osm_canvas">
+        <iframe 
+          width="765" 
+          height="551" 
+          id="osm_canvas" 
+          src="about:blank" 
+          frameborder="0" 
+          scrolling="no" 
+          marginheight="0" 
+          marginwidth="0">
+        </iframe>
+
+        <script>
+          const canvas = document.getElementById('osm_canvas');
+          const doc = canvas.contentDocument;
+          
+          doc.write('<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.min.css" />');
+          doc.write('<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.min.js"><\/script>');
+          doc.write('<div id="osm-map" style="width:765px; height:551px;"></div>');
+
+          doc.write(`
+            <script>
+              var mapOptions = {
+                center: [-29.8425284, -53.7680577],
+                zoom: 7,
+                attributionControl: true
+              };
+              var map = new L.map("osm-map", mapOptions);
+              map.attributionControl.setPrefix(
+                '&copy; <a target="_blank" href="https://www.openstreetmap.org/copyright" rel="nofollow noopener noreferrer">OpenStreetMap</a>'
+              );
+
+              var layer = new L.TileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png");
+              map.addLayer(layer);
+
+              let marker = new L.Marker([-29.8425284, -53.7680577]);
+              marker.addTo(map).bindPopup('');
+              marker.on('mouseover', function(ev) {
+                marker.openPopup();
+              });
+            <\/script>
+          `);
+
+          doc.close();
+        </script>
+
+        <style>
+          .mapouter {
+            position: relative;
+            text-align: right;
+            height: 551px;
+            width: 765px;
+          }
+          .osm_canvas {
+            overflow: hidden;
+            background: none !important;
+            height: 551px;
+            width: 765px;
+          }
+        </style>
+        
+        <a href="https://www.embedmaps.co/openstreetmap">openstreetmap on website</a>
+      </div>
+    </div>
+
+  </section>
+
+  <section id="informacoes-meteorologicas">
+    <h3>Dados Meteorológicos</h3>
+    <p>Temperatura: <span class="dado-meteorologico">20°C</span></p>
+    <p>Clima: <span class="dado-meteorologico">Ensolarado</span></p>
+    <p>Velocidade do Vento: <span class="dado-meteorologico">15 km/h</span></p>
+    <p>Precipitação: <span class="dado-meteorologico">5 mm</span></p>
+</section>
+
+
+  <script>
+    const apiKey = "00bc073b05e84cd18b6142212242610"; // chave da WeatherAPI
+    const city = "Santa Maria"; // podem selecionar outra cidade desejada
+    const weatherUrl = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}&aqi=no`;
+
+    fetch(weatherUrl)
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('temperature').innerText = `Temperatura: ${data.current.temp_c} °C`;
+        document.getElementById('weather').innerText = `Clima: ${data.current.condition.text}`;
+        document.getElementById('wind-speed').innerText = `Velocidade do Vento: ${data.current.wind_kph} km/h`;
+        document.getElementById('precipitation').innerText = `Precipitação: ${data.current.precip_mm} mm`;
+      })
+      .catch(error => {
+        console.error('Erro ao obter dados meteorológicos:', error);
+      });
+  </script>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>&copy; 2024 Central de Emergência de Enchentes - Rio Grande do Sul</p>
+    <p><a href="https://www.gov.br" target="_blank">Visite o site do Governo para mais informações</a></p>
+  </footer>
+</body>
+</html>
